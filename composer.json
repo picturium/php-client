@@ -1,0 +1,22 @@
+{
+  "name": "lamka02sk/picturium",
+  "description": "PHP client library for Picturium image server",
+  "type": "library",
+  "license": "GPL-3.0-only",
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Picturium\\": "src/"
+    },
+    "files": [
+      "src/picturium.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "lamka02sk"
+    }
+  ]
+}
