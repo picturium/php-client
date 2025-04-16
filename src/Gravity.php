@@ -25,4 +25,9 @@ class Gravity
         self::LEFT,
         self::RIGHT,
     ];
+
+    public static function validate(string $gravity): bool
+    {
+        return in_array($gravity, self::ALLOWED_VALUES, true);
+    }
 }

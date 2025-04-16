@@ -19,7 +19,7 @@ class UrlGenerator
         $urlParams = [];
         $instance = $this->picturium->getInstance();
 
-        $src = $data["src"];
+        $src = $data["src"] ?? $this->picturium->getSrc();
         unset($data["src"]);
 
         ksort($data);
@@ -43,6 +43,12 @@ class UrlGenerator
             }
         }
 
+        if (isset($urlParams["original"]) && $urlParams["original"]) {
+            $urlParams = ["original" => "true"];
+        } else {
+            unset($urlParams["original"]);
+        }
+
         if (strpos($src, $instance["url"]) === 0) {
             $src = mb_substr($src, mb_strlen($instance["url"]));
         }
@@ -50,15 +56,16 @@ class UrlGenerator
         $src = explode("?", $src)[0];
         $src = trim($src, " /");
 
-        $urlString = $src . "?" . http_build_query($urlParams);
-        $urlString = str_replace("%3A", ":", $urlString);
+        $urlString = $src . "?" . urldecode(http_build_query($urlParams));
+
+        $instanceUrl = trim($instance["url"], " /");
 
         if (!empty($instance["token"])) {
             $token = hash_hmac("sha256", $urlString, $instance["token"]);
-            return $instance["url"] . "/" . $urlString . "?token=" . $token;
+            return $instanceUrl . "/" . $urlString . (str_ends_with($urlString, "?") ? "" : "&") . "token=" . $token;
         }
 
-        return $instance["url"] . "/" . $urlString;
+        return trim($instanceUrl . "/" . $urlString, " ?");
     }
 
     /**

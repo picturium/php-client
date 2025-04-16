@@ -1,4 +1,7 @@
 /vendor/
+/cache/
+
+.env
 .idea
 .vscode
 .zed

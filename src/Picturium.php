@@ -35,6 +35,11 @@ class Picturium
         return $this->instance;
     }
 
+    public function getSrc(): string
+    {
+        return $this->src;
+    }
+
     public function add(PicturiumImage $image): self
     {
         $this->images[] = $image;

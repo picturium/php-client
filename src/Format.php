@@ -12,4 +12,9 @@ class Format
     public const PDF = "pdf";
 
     public const ALLOWED_VALUES = [self::AUTO, self::JPG, self::WEBP, self::AVIF, self::PNG, self::PDF];
+
+    public static function validate(string $color): bool
+    {
+        return in_array($color, self::ALLOWED_VALUES, true);
+    }
 }

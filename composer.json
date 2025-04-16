@@ -2,6 +2,7 @@
   "name": "lamka02sk/picturium",
   "description": "PHP client library for Picturium image server",
   "type": "library",
+  "version": "0.1.0",
   "license": "GPL-3.0-only",
   "require": {
     "php": ">=7.4"
@@ -14,9 +15,26 @@
       "src/picturium.php"
     ]
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Picturium\\": "src/",
+      "Tests\\": "tests/"
+    },
+    "files": [
+      "src/picturium.php"
+    ]
+  },
   "authors": [
     {
       "name": "lamka02sk"
     }
-  ]
+  ],
+  "require-dev": {
+    "pestphp/pest": "^3.8"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
 }

@@ -2,7 +2,7 @@
 
 namespace Picturium;
 
-use Picturium;
+use Picturium\Picturium;
 use RuntimeException;
 
 class PicturiumImage
@@ -277,7 +277,7 @@ class PicturiumImage
     /**
      * @return array<string,mixed>
      */
-    protected function serialize(?int $dpr = null): array
+    public function serialize(?int $dpr = null): array
     {
         if ($dpr === 1) {
             $dpr = null;
@@ -285,17 +285,17 @@ class PicturiumImage
 
         return [
             "src" => $this->src,
-            "width" => $this->width,
-            "height" => $this->height,
-            "aspectRatio" => $this->aspectRatio,
-            "quality" => $this->quality,
+            "w" => $this->width,
+            "h" => $this->height,
+            "ar" => $this->aspectRatio,
+            "q" => $this->quality,
             "crop" => $this->crop,
             "load" => $this->load,
             "thumb" => $this->thumb,
             "original" => $this->original,
-            "rotate" => $this->rotate,
-            "background" => $this->background,
-            "format" => $this->format,
+            "rot" => $this->rotate,
+            "bg" => $this->background,
+            "f" => $this->format,
             "dpr" => $dpr,
         ];
     }
